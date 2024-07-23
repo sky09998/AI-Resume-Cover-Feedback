@@ -1,0 +1,50 @@
+{% extends 'gptchecker/base.html' %}
+
+{% block title %}Order Success{% endblock %}
+
+
+    {% block content %}
+    <body class="admin-panel"></body>
+    <h1>This is Admin panel</h1>
+    <a href="{% url 'register' %}">
+        <button>Add User</button>
+    </a>
+    <button onclick="showTotalUsers()">Show Total Users</button>
+    <div id="totalUsers" style="display: none;">
+        <p>Total Users: {{ users|length }}</p>
+    </div>
+
+    <!-- Button to show total resumes -->
+    <button onclick="showTotalResumes()">Show Total Resumes</button>
+    <div id="totalResumes" style="display: none;">
+        <p>Total Resumes: {{ dcu }}</p>
+    </div>
+    <button onclick="showDashBoard()">Dashboard (Statistics)</button>
+    <script>
+        function showTotalUsers() {
+            var totalUsersDiv = document.getElementById('totalUsers');
+            totalUsersDiv.style.display = 'block';  // Show the div containing total users
+        }
+        function showDashBoard(){
+            window.location.href = '{% url 'dashboard' %}';
+        }
+        function showTotalResumes() {
+            var totalResumesDiv = document.getElementById('totalResumes');
+            totalResumesDiv.style.display = 'block';  // Show the div containing total resumes
+        }
+    </script>
+    <ul>
+        {% for user in users %}
+        <li> {{ user.first_name }} - {{ user.email }} - {{ user.last_name }} - {{ user.phone }}
+            <form action="{% url 'delete_user' user.user_id %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <footer>
+        <p>&copy; 2024 ResumeWizard</p>
+    </footer>
+</body>
+    {% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>{% block title %}My Website{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/home.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/services.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/contact.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/about.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/login.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/admin_login.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/document_view.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/register.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/user_dashboard.css' %}">
+
+    <meta charset="UTF-8">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="navbar">
+        <a {% block home_class %}{% endblock %} href="{% url 'home' %}">Home</a>
+        <a {% block services_class %}{% endblock %} href="{% url 'services' %}">Services</a>
+        <a {% block contact_class %}{% endblock %} href="{% url 'contact' %}">Contact</a>
+        <a {% block about_class %}{% endblock %} href="{% url 'about' %}">About Us</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="logout-link">Logout</a>  <!-- Logout link -->
+            <a href="{% url 'document_view' %}" class="logout-link">Upload PDF</a>
+        {% else %}
+            <a {% block login_class %}{% endblock %} href="{% url 'login' %}">Login</a>
+        {% endif %}
+        <a {% block admin_login_class %}{% endblock %} href="{% url 'admin_login' %}">Admin</a>
+    </div>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

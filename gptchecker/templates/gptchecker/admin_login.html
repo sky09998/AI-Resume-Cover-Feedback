@@ -1,0 +1,22 @@
+{% extends 'gptchecker/base.html' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block admin_login_class %}class="active"{% endblock %}
+
+{% block extra_head %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/login.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h1>Admin Login</h1>
+    <form method="post" action="{% url 'user_dashboard' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <footer>
+        <p>&copy; 2024 ResumeWizard</p>
+    </footer>
+{% endblock %}

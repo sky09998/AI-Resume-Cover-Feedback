@@ -1,0 +1,78 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Style for the login page header */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 50px; /* Adds space at the top for visual separation */
+}
+
+/* Styling the form */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling form paragraphs */
+form p,
+form button[type='submit'] {
+    margin-bottom: 10px; /* Adds spacing between form elements */
+}
+
+/* Styling the input fields */
+input[type='text'],
+input[type='password'] {
+    padding: 10px;
+    margin-bottom: 10px; /* Spacing between input fields */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Styling the submit button */
+button[type='submit'] {
+    padding: 10px;
+    background-color: #0623b5; /* A shade of green for distinction */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+button[type='submit']:hover {
+    background-color: #0623b5; /* A darker shade for the hover state */
+}
+
+/* Ensure button takes full width of its flex container */
+form button[type='submit'] {
+    align-self: stretch; /* Takes full width */
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+/* Reusing navbar styles from navbar.css */
+/* ... existing styles from navbar.css ... */

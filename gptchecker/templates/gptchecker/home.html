@@ -1,0 +1,41 @@
+{% extends 'gptchecker/base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block home_class %}class="active"{% endblock %}
+
+{% block content %}
+
+<!-- Add more content as needed -->
+<header>
+    <h1>ResumeWizard</h1>
+    <h2>Feedback that Fuels Your Success...</h2>
+    <p>Don't leave your next opportunity to chance!</p>
+    <p>At ResumeWizard we’ve helped over one million job-seekers change careers — and we want to help you, too. Getting a second opinion on your resume might make the difference between getting the job and getting rejected.</p>
+    <a href="{% url 'register' %}">Get Started</a>
+</header>
+<main>
+    <div class="container">
+        <section>
+            <h2>Expert Feedback</h2>
+            <p>Receive personalized feedback and suggestions from industry experts to enhance your resume.</p>
+        </section>
+        <section>
+            <h2>Professional Design</h2>
+            <p>Transform your resume into a visually appealing and professionally designed document.</p>
+        </section>
+        <section>
+            <h2>Keyword Optimization</h2>
+            <p>Learn how to strategically incorporate keywords and phrases to optimize your resume for applicant tracking systems (ATS).</p>
+        </section>
+        <section>
+            <h2>Format Enhancement</h2>
+            <p>Get guidance on formatting, layout, and structure to ensure your resume stands out to employers.</p>
+        </section>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 ResumeWizard</p>
+</footer>
+
+{% endblock %}

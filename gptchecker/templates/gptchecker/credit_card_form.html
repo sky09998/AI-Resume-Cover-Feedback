@@ -1,0 +1,32 @@
+{% extends 'gptchecker/base.html' %}
+
+{% block title %}Credit Card Form{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Enter Credit Card Details</h1>
+    <p>Please enter your credit card information to proceed with the payment</p>
+</header>
+
+<main>
+    <div class="container">
+        <form action="{% url 'place_order' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="pack" value="{{ pack }}">
+            <label for="name">Name on Card:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="card_number">Card Number:</label>
+            <input type="text" id="card_number" name="card_number" required>
+            <label for="expiry_month">Expiry Month:</label>
+            <input type="text" id="expiry_month" name="expiry_month" required>
+            <label for="expiry_year">Expiry Year:</label>
+            <input type="text" id="expiry_year" name="expiry_year" required>
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 ResumeWizard</p>
+</footer>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'gptchecker/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS for styling and responsive layout -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gptchecker/login.css' %}" />
+
+</head>
+<main>
+    <div class="container mt-5">
+        <h1 class="mb-4">Dashboard</h1>
+
+        <!-- Row for Activity Logs and API Requests -->
+        <div class="row">
+            <div class="col-md-6">
+                <h2>User Activities</h2>
+                <div class="list-group">
+                    {% for log in user_logs %}
+                    <a href="#" class="list-group-item list-group-item-action">
+                        {{ log.timestamp }}: {{ log.user }} - {{ log.activity_type }} - {{ log.details }}
+                    </a>
+                    {% empty %}
+                    <div class="alert alert-warning" role="alert">
+                        No recent user activities.
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>API Requests</h2>
+                <div class="list-group">
+                    {% for log in api_logs %}
+                    <a href="#" class="list-group-item list-group-item-action">
+                        {{ log.timestamp }}: {{ log.request_type }} - {{ log.details }}
+                    </a>
+                    {% empty %}
+                    <div class="alert alert-warning" role="alert">
+                        No recent API requests.
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Container -->
+        <div class="my-4">
+            <canvas id="activityChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+
+    <!-- Initializing Chart.js for visualizing data -->
+    <script>
+        var ctx = document.getElementById('activityChart').getContext('2d');
+        var activityChart = new Chart(ctx, {
+            type: 'line', // Type of chart: line chart
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'], // Example labels
+                datasets: [{
+                    label: 'User Activities',
+                    data: [10, 20, 30, 20, 10], // Example data
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'API Requests',
+                    data: [5, 15, 5, 10, 20], // Example data
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <!-- Bootstrap and Popper.js scripts for responsive features -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</main>
+<footer>
+    <p>&copy; 2024 ResumeWizard</p>
+</footer>
+{% endblock %}

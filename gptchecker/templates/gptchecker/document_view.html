@@ -1,0 +1,45 @@
+{% extends 'gptchecker/base.html' %}
+
+{% block title %}Resume Feedback{% endblock %}
+
+{% block content %}
+
+    <header class="document">
+        <div class="container123">
+            <div><h1>Welcome, {{ request.user.username }}!</h1></div>
+            <div><h2>How Strong is your resume ?</h2><br></div>
+            <div><h4>Get a free confidential review from a resume expert</h4></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="upload-section">
+                <h3>Upload Your Resume</h3>
+                <form id="uploadForm" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Get Resume/Cover Review</button>
+                </form>
+            </section>
+
+            {% if feedback %}
+                <section class="feedback-section">
+                    <h3>Feedback</h3>
+                    <div class="feedback">{{ feedback|safe }}</div>
+                </section>
+            {% endif %}
+        </div>
+       <div class="container">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ResumeWizard</p>
+    </footer>
+    {% endblock %}
+

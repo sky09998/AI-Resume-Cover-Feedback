@@ -1,0 +1,52 @@
+{% extends 'gptchecker/base.html' %}
+
+{% block title %}Services{% endblock %}
+
+{% block services_class %}class="active"{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Our Services</h1>
+    <p>Choose the pack that best fits your needs</p>
+</header>
+
+<main>
+    <div class="service-container">
+        <article>
+            <h2>Starter Pack</h2>
+            <p class="price">$149</p>
+            <ul>
+                <li>Professional Resume Review</li>
+                <li>Basic Resume Template</li>
+                <li>Email Support</li>
+            </ul>
+            <a href="{% url 'credit_card_form' %}" class="btn">Get Started</a>
+        </article>
+        <article>
+            <h2>Premium Pack</h2>
+            <p class="price">$199</p>
+            <ul>
+                <li>Professional Resume Review</li>
+                <li>Basic Resume Template</li>
+                <li>Email Support</li>
+            </ul>
+            <a href="{% url 'credit_card_form' %}" class="btn">Get Started</a>
+        </article>
+        <article>
+            <h2>Ultimate Pack</h2>
+            <p class="price">$249</p>
+            <ul>
+                <li>Professional Resume Review</li>
+                <li>Basic Resume Template</li>
+                <li>Email Support</li>
+            </ul>
+            <a href="{% url 'credit_card_form' %}" class="btn">Get Started</a>
+        </article>
+        <!-- Repeat similar code for Premium and Ultimate packs -->
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 ResumeWizard</p>
+</footer>
+{% endblock %}
